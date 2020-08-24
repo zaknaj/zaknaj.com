@@ -1,0 +1,20 @@
+<script>
+  import Hero from "../sections/Hero.svelte";
+  import Testimonial from "../sections/Testimonial.svelte";
+  import Navbar from "../components/Navbar.svelte";
+
+  let scrolled = false;
+  const setScrolled = (val) => {
+    scrolled = val;
+  };
+</script>
+
+<svelte:head>
+  <title>Zak's Portfolio - Freelance Web Developer</title>
+</svelte:head>
+
+<div class="base">
+  <Navbar {scrolled} />
+  <Hero {setScrolled} />
+  <Testimonial />
+</div>
