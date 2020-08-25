@@ -1,14 +1,65 @@
 <script>
+  import { onMount } from "svelte";
+  import { fade, fly } from "svelte/transition";
+
+  let active = "home";
+  let mounted = false;
+  let barWidth = 0;
+  let barLeft = 0;
+  let showMobileMenu = false;
+
+  onMount(() => {
+    mounted = true;
+  });
+
+  $: {
+    if (mounted) {
+      barWidth = document
+        .querySelector(`#${active}-link`)
+        .getBoundingClientRect().width;
+      barLeft = document
+        .querySelector(`#${active}-link`)
+        .getBoundingClientRect().x;
+    }
+  }
+
   export let scrolled = false;
 </script>
 
 <div class="main {scrolled ? 'scrolled' : ''}">
   <div class="container">
     <div class="logo">Hi, I'm Zak</div>
+    <div
+      class="mobile-menu-icon"
+      on:click={() => {
+        showMobileMenu = !showMobileMenu;
+      }}>
+      {#if !showMobileMenu}
+        <img src="/images/menu.svg" alt="mobile menu" />
+      {:else}
+        <img in:fade src="/images/x.svg" alt="close mobile menu" />
+      {/if}
+
+    </div>
     <div class="links">
-      <div class="link active">Home</div>
-      <div class="link">About</div>
-      <div class="link">Contact</div>
+      <div
+        on:click={() => (active = 'home')}
+        id="home-link"
+        class="link {active === 'home' && 'active'}">
+        Home
+      </div>
+      <div
+        on:click={() => (active = 'about')}
+        id="about-link"
+        class="link {active === 'about' && 'active'}">
+        About
+      </div>
+      <div
+        on:click={() => (active = 'contact')}
+        id="contact-link"
+        class="link {active === 'contact' && 'active'}">
+        Contact
+      </div>
       <div class="link color-mode">
         <div class="icon">
           <img src="/images/day.svg" alt="day icon" />
@@ -17,6 +68,28 @@
       </div>
     </div>
   </div>
+  <div
+    class="sliding-bar"
+    style="width: {barWidth}px; transform: translateX({barLeft}px); opacity: {scrolled ? '1' : '0'}" />
+  {#if showMobileMenu}
+    <div transition:fade class="mobile-menu">
+      <div class="mobile-links">
+        <div in:fly={{ x: -50, delay: 0, duration: 750 }} class="mobile-link">
+          Home
+        </div>
+        <div in:fly={{ x: 50, delay: 100, duration: 750 }} class="mobile-link">
+          About
+        </div>
+        <div in:fly={{ x: -50, delay: 200, duration: 750 }} class="mobile-link">
+          Contact
+        </div>
+        <div in:fly={{ x: 50, delay: 300, duration: 750 }} class="mobile-link">
+          Day mode
+        </div>
+
+      </div>
+    </div>
+  {/if}
 </div>
 
 <style>
@@ -25,7 +98,7 @@
     left: 0;
     position: fixed;
     width: 100%;
-    z-index: 4;
+    z-index: 5;
     border-bottom: 1px solid transparent;
     transition: all 0.3s;
   }
@@ -50,6 +123,12 @@
     padding: 15px 100px;
     color: white;
     transition: all 0.3s;
+  }
+
+  .mobile-menu-icon {
+    display: none;
+    position: relative;
+    z-index: 7;
   }
 
   .links {
@@ -82,13 +161,54 @@
     margin-right: 12px;
   }
 
-  /* @media screen and (max-width: 1600px) {
-    .container {
-      font-size: 16px;
-    }
+  .sliding-bar {
+    position: absolute;
+    bottom: -1px;
+    left: 0%;
+    transition: 0.3s all;
+    height: 1px;
+    background: white;
+  }
 
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 6;
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-links {
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .mobile-link {
+    margin-bottom: 50px;
+  }
+
+  @media screen and (max-width: 600px) {
+    .container,
+    .main.scrolled .container {
+      padding: 24px 32px;
+    }
     .links {
+      display: none;
+      align-items: center;
       font-size: 14px;
     }
-  } */
+    .mobile-menu-icon {
+      display: flex;
+      align-items: center;
+      margin: -15px;
+      padding: 15px;
+    }
+  }
 </style>

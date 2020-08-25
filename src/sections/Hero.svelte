@@ -22,11 +22,11 @@
       threshold: 0.95,
     });
 
-    observer.observe(document.querySelector("#hero"));
+    observer.observe(document.querySelector("#hero-title"));
   });
 </script>
 
-<div class="hero" id="hero">
+<div class="hero">
   <div class="background">
 
     <div class="animated-background">
@@ -38,7 +38,7 @@
 
   <div class="content">
     <img class="picture" src="/images/person.png" alt="Zakaria Najem" />
-    <div class="title">
+    <div class="title" id="hero-title">
       The Swiss Army
       <br />
       knife for your
@@ -55,10 +55,12 @@
       </div>
     </div>
     <div class="icons-block">
-      <img
-        class="moving-dots"
-        src="/images/moving-dots.svg"
-        alt="moving dots" />
+      <div class="moving-dots-container">
+        <img
+          class="moving-dots"
+          src="/images/moving-dots.svg"
+          alt="moving dots" />
+      </div>
       <div class="icon-block">
         <div class="icon">
           <img src="/images/pen.svg" alt="pen" />
@@ -120,7 +122,6 @@
         </div>
       </div>
     </div>
-
   </div>
 
 </div>
@@ -218,13 +219,16 @@
     font-size: 14px;
   }
 
-  .icons-block .moving-dots {
-    position: absolute;
+  .moving-dots {
     display: block;
-    width: 800px;
     animation: moving-dots 0.5s linear infinite;
-    top: 58px;
+    width: 800px;
+  }
+
+  .moving-dots-container {
     left: 40px;
+    position: absolute;
+    top: 58px;
   }
 
   .icon-block {
@@ -326,14 +330,82 @@
       height: 1000px;
     }
     .background-overlay {
-      top: 240px;
+      top: 155px;
+    }
+    .background {
+      z-index: 1;
+    }
+
+    .hero {
+      height: unset;
+      min-height: 100vh;
+
+      background-color: #1b1b1b;
+    }
+    .content {
+      padding: 0px 32px;
+      margin-top: 110px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .title {
+      font-size: 28px;
+      margin-bottom: 26px;
+    }
+
+    .video-resume {
+      font-size: 12px;
+      margin-left: 0px;
+      margin-top: 16px;
+    }
+
+    .video-resume img {
+      height: 12px;
+    }
+
+    .youtube-icon {
+      margin-left: 8px;
+    }
+
+    .icons-block {
+      display: block;
+    }
+
+    .icon-block {
+      margin-bottom: 60px;
+      position: relative;
+      background: #1b1b1b;
+      box-shadow: 0px 0px 15px 14px #1b1b1b;
+      transform: scale(0.9);
+    }
+    .icon-block:last-child {
+      background: #1b1b1b;
+    }
+
+    .cta-block {
+      display: block;
+    }
+
+    .cta-block button {
+      height: 45px;
+      font-size: 16px;
+      padding: 13px 19px;
+    }
+
+    .moving-dots-container {
+      transform: rotate(90deg);
+      transform-origin: 0px 0px;
+      left: 63px;
+    }
+
+    .picture {
+      left: unset;
+      height: 110vw;
+      top: unset;
+      bottom: 0;
+      position: fixed;
+      right: -70px;
     }
   }
-
-  /* @media screen and (max-width: 1300px) {
-    .icons-block {
-      transform: scale(0.9);
-      transform-origin: 0px 0px;
-    }
-  } */
 </style>
