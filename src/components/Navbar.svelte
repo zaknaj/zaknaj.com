@@ -3,6 +3,7 @@
   import { fade, fly } from "svelte/transition";
 
   let active = "home";
+  let defaultActive = "home";
   let mounted = false;
   let barWidth = 0;
   let barLeft = 0;
@@ -43,29 +44,32 @@
     </div>
     <div class="links">
       <div
-        on:click={() => (active = 'home')}
+        on:mouseover={() => (active = 'home')}
+        on:mouseleave={() => (active = defaultActive)}
         id="home-link"
         class="link {active === 'home' && 'active'}">
         Home
       </div>
       <div
-        on:click={() => (active = 'about')}
+        on:mouseover={() => (active = 'about')}
+        on:mouseleave={() => (active = defaultActive)}
         id="about-link"
         class="link {active === 'about' && 'active'}">
         About
       </div>
       <div
-        on:click={() => (active = 'contact')}
+        on:mouseover={() => (active = 'contact')}
+        on:mouseleave={() => (active = defaultActive)}
         id="contact-link"
         class="link {active === 'contact' && 'active'}">
-        Contact
+        Contact me
       </div>
-      <div class="link color-mode">
+      <!-- <div class="link color-mode">
         <div class="icon">
           <img src="/images/day.svg" alt="day icon" />
         </div>
         <div>Day mode</div>
-      </div>
+      </div> -->
     </div>
   </div>
   <div
@@ -82,9 +86,6 @@
         </div>
         <div in:fly={{ x: -50, delay: 200, duration: 750 }} class="mobile-link">
           Contact
-        </div>
-        <div in:fly={{ x: 50, delay: 300, duration: 750 }} class="mobile-link">
-          Day mode
         </div>
 
       </div>
@@ -155,11 +156,11 @@
     opacity: 1;
   }
 
-  .color-mode img {
+  /* .color-mode img {
     height: 20px;
     display: block;
     margin-right: 12px;
-  }
+  } */
 
   .sliding-bar {
     position: absolute;
