@@ -100,6 +100,7 @@
     max-width: 100vw;
     position: relative;
     height: 100vh;
+    box-shadow: inset 0px -1px 0px 0px #232323;
   }
 
   .content {
@@ -202,7 +203,7 @@
   }
 
   .icon-block:last-child {
-    background: #1b1b1b;
+    background: #000;
     position: relative;
   }
 
@@ -215,12 +216,12 @@
     margin: 12px 0;
     line-height: 1.4;
     display: inline-block;
-    background: #1b1b1b;
+    background: #000;
     position: relative;
     margin-left: -10px;
     padding-left: 10px;
-    box-shadow: 0px 0px 15px 15px #1b1b1b;
-    background: #1b1b1b;
+    box-shadow: 0px 0px 15px 15px #000;
+    background: #000;
   }
 
   .icon-subtitle {
@@ -231,7 +232,7 @@
   /* BACKGROUND */
 
   .background {
-    background-color: #201100;
+    background-color: #000;
     height: 100vh;
     position: absolute;
     top: 0;
@@ -257,7 +258,7 @@
 
   .background-overlay {
     height: 100vh;
-    background: linear-gradient(170deg, #000000 -20%, #1b1b1b 30%);
+    background: black;
     position: absolute;
     top: 35vh;
     left: 0;
@@ -306,7 +307,7 @@
       height: unset;
       min-height: 100vh;
 
-      background-color: #1b1b1b;
+      background-color: #000;
     }
     .content {
       padding: 0px 32px;
@@ -341,12 +342,12 @@
     .icon-block {
       margin-bottom: 60px;
       position: relative;
-      background: #1b1b1b;
-      box-shadow: 0px 0px 15px 14px #1b1b1b;
+      background: #000;
+      box-shadow: 0px 0px 15px 14px #000;
       transform: scale(0.9);
     }
     .icon-block:last-child {
-      background: #1b1b1b;
+      background: #000;
     }
 
     .cta-block {

@@ -1,40 +1,5 @@
 <script>
-  import Hero from "./Hero.svelte";
-
-  const logos = [
-    {
-      fileName: "ramp",
-      link: "www.ramp.com",
-    },
-    {
-      fileName: "adevinta",
-      link: "www.adevinta.com",
-    },
-    {
-      fileName: "obytes",
-      link: "www.obytes.com",
-    },
-    {
-      fileName: "gemography",
-      link: "www.gemography.com",
-    },
-    {
-      fileName: "avito",
-      link: "www.avito.ma",
-    },
-    {
-      fileName: "monbanquet",
-      link: "www.monbanquet.fr",
-    },
-    {
-      fileName: "bookr",
-      link: "www.bookr.co",
-    },
-  ];
-
-  let hoveredLogo = "";
-
-  let animationPaused = false;
+  import ScrollingLogos from "../components/ScrollingLogos.svelte";
 </script>
 
 <div class="main">
@@ -53,25 +18,7 @@
         <div class="companies-wrapper">
           <div class="left-overlay" />
           <div class="right-overlay" />
-          <div
-            class="companies"
-            class:paused={animationPaused}
-            on:mouseover={() => (animationPaused = true)}
-            on:mouseout={() => (animationPaused = false)}>
-            {#each ['', ''] as nothing}
-              {#each logos as logo}
-                <a
-                  target="__blank"
-                  href={'https://' + logo.link}
-                  on:mouseover={() => (hoveredLogo = logo.fileName)}
-                  on:mouseout={() => (hoveredLogo = '')}>
-                  <img
-                    src={'/images/' + logo.fileName + (hoveredLogo === logo.fileName ? '' : '-gray') + '.svg'}
-                    alt={logo.fileName + ' logo'} />
-                </a>
-              {/each}
-            {/each}
-          </div>
+          <ScrollingLogos />
         </div>
       </div>
     </div>
@@ -122,7 +69,11 @@
     padding-top: 120px;
     margin: auto;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+  }
+
+  .left {
+    margin-right: 230px;
   }
 
   .title-container .subtitle,
@@ -215,18 +166,6 @@
     height: 26px;
   }
 
-  .companies {
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-    animation: move-logos 10s linear infinite;
-    position: absolute;
-    height: 100%;
-    left: 0;
-    top: 0;
-    will-change: transform;
-  }
-
   .left-overlay,
   .right-overlay {
     width: 50px;
@@ -248,21 +187,60 @@
     background: linear-gradient(to left, black, transparent);
   }
 
-  .companies a {
-    display: block;
-    margin-right: 25px;
-  }
-
-  .paused {
-    animation-play-state: paused;
-  }
-
-  @keyframes move-logos {
-    0% {
-      transform: translateX(0%);
+  @media screen and (max-width: 600px) {
+    .container {
+      display: block;
+      padding: 0 32px;
+      padding-top: 100px;
     }
-    100% {
+    .left {
+      margin-right: 0;
+    }
+
+    .title-container .title {
+      font-size: 26px;
+      margin-bottom: 450px;
+    }
+
+    .main {
+      background-size: 1000px;
+    }
+
+    .black-overlay {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 130px;
+      background: linear-gradient(to top, black, transparent);
+    }
+
+    .right {
+      position: absolute;
+      top: 270px;
+      width: 100%;
+      padding: 0 38px;
+      left: 50%;
       transform: translateX(-50%);
+    }
+
+    .testimonial-text {
+      font-size: 12px;
+      margin-bottom: 25px;
+    }
+
+    .quotes {
+      top: -30px;
+      left: -15px;
+    }
+
+    .person .image {
+      width: 65px;
+      height: 65px;
+      margin-right: 15px;
+    }
+
+    .person .info .name {
+      margin-bottom: 3px;
     }
   }
 </style>
