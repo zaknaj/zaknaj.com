@@ -64,7 +64,7 @@
   .main {
     padding-top: 300px;
     min-height: 100vh;
-    background: linear-gradient(to bottom, black, #1f1f1f);
+    background: black;
     color: white;
     z-index: 4;
     position: relative;
