@@ -232,7 +232,7 @@
   /* BACKGROUND */
 
   .background {
-    background-color: #000;
+    animation: animate-color 15s linear infinite;
     height: 100vh;
     position: absolute;
     top: 0;
@@ -288,6 +288,39 @@
     }
   }
 
+  @keyframes animate-color {
+    0% {
+      background-color: #350000;
+    }
+    20% {
+      background-color: #352700;
+    }
+    30% {
+      background-color: #2d3500;
+    }
+    40% {
+      background-color: #013500;
+    }
+    50% {
+      background-color: #003529;
+    }
+    60% {
+      background-color: #001535;
+    }
+    70% {
+      background-color: #140035;
+    }
+    80% {
+      background-color: #35002c;
+    }
+    90% {
+      background-color: #350000;
+    }
+    100% {
+      background-color: #350000;
+    }
+  }
+
   /* MEDIA QUERIES */
 
   @media screen and (max-width: 600px) {
@@ -295,6 +328,8 @@
       left: -530px;
       top: -250px;
       height: 1000px;
+      animation: rotate-bg 10s linear infinite;
+      transform-origin: 55% 44%;
     }
     .background-overlay {
       top: 155px;

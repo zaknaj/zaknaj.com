@@ -242,5 +242,9 @@
     .person .info .name {
       margin-bottom: 3px;
     }
+
+    .underlined:before {
+      height: 9px;
+    }
   }
 </style>

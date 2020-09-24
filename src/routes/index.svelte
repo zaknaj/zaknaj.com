@@ -2,6 +2,7 @@
   import Hero from "../sections/Hero.svelte";
   import Testimonial from "../sections/Testimonial.svelte";
   import Navbar from "../components/Navbar.svelte";
+  import Projects from "../sections/Projects.svelte";
 
   let scrolled = false;
   const setScrolled = (val) => {
@@ -17,4 +18,5 @@
   <Navbar {scrolled} />
   <Hero {setScrolled} />
   <Testimonial />
+  <Projects />
 </div>
