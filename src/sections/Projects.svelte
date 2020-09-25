@@ -204,13 +204,13 @@
     }
 
     .section-title {
-      font-size: 18px;
+      font-size: 20px;
       margin-bottom: 40px;
     }
 
     .section-title:before {
       bottom: -10px;
-      width: 30px;
+      width: 40px;
       height: 3px;
       border-radius: 3px;
     }
@@ -220,12 +220,12 @@
     }
 
     .link-title {
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 700;
     }
 
     .description {
-      font-size: 12px;
+      font-size: 14px;
     }
 
     .section {

@@ -4,6 +4,7 @@
   import Navbar from "../components/Navbar.svelte";
   import Projects from "../sections/Projects.svelte";
   import Whatyouget from "../sections/WhatYouGet.svelte";
+  import TechStack from "../sections/TechStack.svelte";
 
   let scrolled = false;
   const setScrolled = (val) => {
@@ -21,4 +22,5 @@
   <Testimonial />
   <Projects />
   <Whatyouget />
+  <TechStack />
 </div>
