@@ -1,3 +1,13 @@
+<script>
+  import Clock from "../components/icons/Clock.svelte";
+  import Globe from "../components/icons/Globe.svelte";
+  import Heart from "../components/icons/Heart.svelte";
+  import People from "../components/icons/People.svelte";
+  import Phone from "../components/icons/Phone.svelte";
+  import Rocket from "../components/icons/Rocket.svelte";
+  import Target from "../components/icons/Target.svelte";
+</script>
+
 <div class="main">
   <div class="container">
     <div class="title-part">
@@ -9,10 +19,7 @@
         <div class="block">
           <div class="block-top">
             <div class="icon">
-              <img
-                class="block-icon"
-                src="/images/globe.svg"
-                alt="globe icon" />
+              <Globe />
             </div>
             <div class="block-title">Excellent<br /> Communication</div>
           </div>
@@ -23,10 +30,7 @@
         <div class="block">
           <div class="block-top">
             <div class="icon">
-              <img
-                class="block-icon"
-                src="/images/rocket.svg"
-                alt="rocket icon" />
+              <Rocket />
             </div>
             <div class="block-title">Performance <br /> & Security</div>
           </div>
@@ -38,10 +42,7 @@
         <div class="block">
           <div class="block-top">
             <div class="icon">
-              <img
-                class="block-icon"
-                src="/images/people.svg"
-                alt="people icon" />
+              <People />
             </div>
             <div class="block-title">User Experience <br /> First</div>
           </div>
@@ -52,10 +53,7 @@
         <div class="block">
           <div class="block-top">
             <div class="icon">
-              <img
-                class="block-icon"
-                src="/images/heart.svg"
-                alt="heart icon" />
+              <Heart />
             </div>
             <div class="block-title">Delightful <br /> Apps</div>
           </div>
@@ -68,10 +66,7 @@
         <div class="block">
           <div class="block-top">
             <div class="icon">
-              <img
-                class="block-icon"
-                src="/images/clock.svg"
-                alt="clock icon" />
+              <Clock />
             </div>
             <div class="block-title">Timely <br /> Deliveries</div>
           </div>
@@ -82,10 +77,7 @@
         <div class="block">
           <div class="block-top">
             <div class="icon">
-              <img
-                class="block-icon"
-                src="/images/target.svg"
-                alt="target icon" />
+              <Target />
             </div>
             <div class="block-title">Pixel <br /> Perfection</div>
           </div>
@@ -96,10 +88,7 @@
         <div class="block">
           <div class="block-top">
             <div class="icon">
-              <img
-                class="block-icon"
-                src="/images/phone.svg"
-                alt="phone icon" />
+              <Phone />
             </div>
             <div class="block-title">Responsive <br /> Websites</div>
           </div>
@@ -166,7 +155,6 @@
   }
 
   .block-top .icon {
-    height: 40px;
     margin-right: 15px;
   }
 
@@ -184,8 +172,8 @@
     margin-top: 14px;
   }
 
-  .icon img {
-    height: 100%;
+  .icon {
+    transform: scale(1.1);
   }
 
   .first-line .block:nth-child(1) .block-title {
