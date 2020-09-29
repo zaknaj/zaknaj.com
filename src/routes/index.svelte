@@ -5,6 +5,7 @@
   import Projects from "../sections/Projects.svelte";
   import Whatyouget from "../sections/WhatYouGet.svelte";
   import TechStack from "../sections/TechStack.svelte";
+  import WhatIDo from "../sections/WhatIDo.svelte";
 
   let scrolled = false;
   const setScrolled = (val) => {
@@ -23,4 +24,5 @@
   <Projects />
   <Whatyouget />
   <TechStack />
+  <WhatIDo />
 </div>

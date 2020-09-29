@@ -1,0 +1,14 @@
+<svg width="450" height="283" viewBox="0 0 450 283" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="450" height="282.065" rx="4" fill="white"/>
+<path d="M0 4C0 1.79086 1.79086 0 4 0H446C448.209 0 450 1.79086 450 4V28.9689H0V4Z" fill="#E4E4E4"/>
+<rect x="60.3262" y="9.1481" width="381.522" height="12.1974" rx="6" fill="white"/>
+<ellipse cx="15.4892" cy="14.4844" rx="4.07609" ry="3.81169" fill="#EA4E4E"/>
+<ellipse cx="30.163" cy="14.4844" rx="4.07609" ry="3.81169" fill="#FFC700"/>
+<ellipse cx="44.8368" cy="14.4844" rx="4.07609" ry="3.81169" fill="#00D823"/>
+<rect x="260.5" y="103" width="98" height="71" rx="4" fill="#FFE2F9"/>
+<path d="M259.642 169.845C260.151 168.156 261.707 167 263.472 167H355.085C357.052 167 358.727 168.43 359.035 170.373L362.766 193.873C363.151 196.302 361.274 198.5 358.815 198.5H256.384C253.702 198.5 251.78 195.913 252.555 193.345L259.642 169.845Z" fill="#FFE2F9"/>
+<rect x="267.5" y="109" width="84" height="52" rx="4" fill="white"/>
+<rect x="117" y="89" width="71" height="129" rx="4" fill="#FFE2F9"/>
+<rect x="125" y="95" width="57" height="108" rx="4" fill="white"/>
+<rect x="149" y="206" width="8" height="8" rx="4" fill="white"/>
+</svg>
