@@ -116,12 +116,12 @@
 
   .cta button span {
     display: inline-block;
-    transition: transform 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     will-change: transform;
   }
 
   .cta button:hover span {
-    transform: translateX(5px);
+    transform: translateX(8px);
   }
 
   .cta button:active {

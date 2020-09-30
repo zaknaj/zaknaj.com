@@ -42,7 +42,11 @@
   <div class="content">
     <img class="picture" src="/images/person.png" alt="Zakaria Najem" />
     <div class="title" id="hero-title">
-      The Swiss Army <br /> knife for your <br /> technical projects.
+      The Swiss Army
+      <br />
+      knife for your
+      <br />
+      technical projects.
     </div>
     <div class="cta-block">
       <button>Hire me</button>
@@ -64,28 +68,36 @@
         <div class="icon"><img src="/images/pen.svg" alt="pen" /></div>
         <div class="icon-title">UI/UX <br /> Design</div>
         <div class="icon-subtitle">
-          Intuitive design, <br /> beautiful graphics
+          Intuitive design,
+          <br />
+          beautiful graphics
         </div>
       </div>
       <div class="icon-block">
         <div class="icon"><img src="/images/code.svg" alt="code" /></div>
         <div class="icon-title">Front End <br /> Development</div>
         <div class="icon-subtitle">
-          Interfaces, interactions <br /> & animations
+          Interfaces, interactions
+          <br />
+          & animations
         </div>
       </div>
       <div class="icon-block">
         <div class="icon"><img src="/images/db.svg" alt="db" /></div>
         <div class="icon-title">Back End <br /> Development</div>
         <div class="icon-subtitle">
-          Web servers, data <br /> storage & authentication
+          Web servers, data
+          <br />
+          storage & authentication
         </div>
       </div>
       <div class="icon-block">
         <div class="icon"><img src="/images/cloud.svg" alt="cloud" /></div>
         <div class="icon-title">Hosting & <br /> Deployment</div>
         <div class="icon-subtitle">
-          Access your website <br /> anywhere, anytime
+          Access your website
+          <br />
+          anywhere, anytime
         </div>
       </div>
     </div>
@@ -110,6 +122,9 @@
   }
 
   .picture {
+    /* TEMPORARY - WAITING FOR PICTURE */
+    display: none;
+
     position: absolute;
     left: 65%;
     top: 10%;
