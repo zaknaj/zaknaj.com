@@ -204,6 +204,7 @@
   .moving-dots {
     display: block;
     animation: moving-dots 0.5s linear infinite;
+    will-change: transform;
     width: 800px;
   }
 
@@ -305,34 +306,34 @@
 
   @keyframes animate-color {
     0% {
-      background-color: #350000;
+      background-color: hsl(0 50% 30% / 1);
     }
     20% {
-      background-color: #352700;
+      background-color: hsl(36 50% 30% / 1);
     }
     30% {
-      background-color: #2d3500;
+      background-color: hsl(72 50% 30% / 1);
     }
     40% {
-      background-color: #013500;
+      background-color: hsl(108 50% 30% / 1);
     }
     50% {
-      background-color: #003529;
+      background-color: hsl(144 50% 30% / 1);
     }
     60% {
-      background-color: #001535;
+      background-color: hsl(170 50% 30% / 1);
     }
     70% {
-      background-color: #140035;
+      background-color: hsl(206 50% 30% / 1);
     }
     80% {
-      background-color: #35002c;
+      background-color: hsl(242 50% 30% / 1);
     }
     90% {
-      background-color: #350000;
+      background-color: hsl(278 50% 30% / 1);
     }
     100% {
-      background-color: #350000;
+      background-color: hsl(360 50% 30% / 1);
     }
   }
 
@@ -344,6 +345,7 @@
       top: -250px;
       height: 1000px;
       animation: rotate-bg 10s linear infinite;
+      will-change: transform;
       transform-origin: 55% 44%;
     }
     .background-overlay {
