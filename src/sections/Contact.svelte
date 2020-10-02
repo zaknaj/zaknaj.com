@@ -1,8 +1,17 @@
 <script>
+  import { onMount } from "svelte";
+
   let showNameInput = true;
   let showEmailInput = true;
   let name = "";
   let email = "";
+  let message = "";
+
+  let textAreaRef = null;
+  let textAreaHeight = 2;
+  let cloneRef = null;
+
+  onMount(() => {});
 
   const handleNameBlur = (e) => {
     if (e.target.value.length > 0) {
@@ -25,7 +34,26 @@
   };
 
   const init = (el) => {
-    el.focus();
+    // el.focus();
+    el.select();
+  };
+
+  const onMessageInput = () => {
+    const lineheight = parseInt(
+      window.getComputedStyle(cloneRef).lineHeight,
+      10
+    );
+    const scrollHeight = cloneRef.scrollHeight;
+    textAreaHeight = parseInt(scrollHeight / lineheight) + 1;
+  };
+
+  const onSubmit = () => {
+    const data = {
+      name,
+      email,
+      message,
+    };
+    console.log(data);
   };
 </script>
 
@@ -67,18 +95,33 @@
             {/if}.
           </div>
           <div class="message">
-            <textarea rows="6" placeholder="Your message here" />
+            <textarea
+              bind:this={textAreaRef}
+              bind:value={message}
+              rows={textAreaHeight}
+              on:input={onMessageInput}
+              placeholder="Your message here" />
+            <textarea
+              class="textarea-clone"
+              bind:this={cloneRef}
+              bind:value={message}
+              rows="6"
+              placeholder="Your message here" />
           </div>
         </div>
         <div class="form-footer">
           <div class="error-msg">Please enter a valid email address.</div>
-          <div><button>Send <span>{'-->'}</span></button></div>
+          <div>
+            <button on:click={onSubmit}>Send <span>{'-->'}</span></button>
+          </div>
         </div>
       </div>
       <div class="email-contact">
         <div class="icon"><img src="/images/email.svg" alt="email icon" /></div>
         <div class="text">or contact me by email directly at</div>
-        <div class="email">hi@zaknaj.com</div>
+        <a href="mailto:hi@zaknaj.com"><div class="email">
+            hi@zaknaj.com
+          </div></a>
       </div>
     </div>
   </div>
@@ -86,7 +129,8 @@
 
 <style>
   .main {
-    padding-top: 100px;
+    padding-top: 170px;
+    min-height: 101vh;
     background: black;
     color: white;
     z-index: 4;
@@ -142,6 +186,21 @@
     color: white;
     background: transparent;
     outline: none;
+    line-height: 24px;
+    resize: none;
+  }
+
+  .textarea-clone {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .form-box .message {
+    position: relative;
   }
 
   .form-box textarea::placeholder {
@@ -257,7 +316,7 @@
     text-align: center;
     padding: 7px 10px;
     min-width: 0;
-    width: 170px;
+    width: 200px;
     display: inline-block;
     border: 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
@@ -277,6 +336,9 @@
   }
 
   @media screen and (max-width: 600px) {
+    .form-box textarea {
+      line-height: 20px;
+    }
     .container {
       padding: 0 32px;
       padding-bottom: 100px;
@@ -297,6 +359,10 @@
     .email-container:before,
     .name-container:before {
       bottom: -5px;
+    }
+
+    .form-box {
+      font-size: 14px;
     }
 
     .form-footer {

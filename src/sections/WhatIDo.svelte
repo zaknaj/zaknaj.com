@@ -85,7 +85,11 @@
       </div>
       <div class="cta">
         <div>Your project doesn’t fit into any of these ?</div>
-        <div><button> Let’s talk about it <span>{'-->'}</span></button></div>
+        <div>
+          <a href="/contact"><button>
+              Let’s talk about it
+              <span>{'-->'}</span></button></a>
+        </div>
       </div>
     </div>
   </div>

@@ -36,10 +36,18 @@ body {
 
 button,
 input,
-select {
+select,
+textarea {
   font-family: inherit;
   outline: none;
   border: none;
+  background: transparent;
+  font-size: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 ::-webkit-scrollbar {

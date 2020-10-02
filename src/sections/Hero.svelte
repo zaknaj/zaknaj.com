@@ -1,36 +1,3 @@
-<script>
-  import { onMount } from "svelte";
-
-  export let setScrolled = () => {};
-
-  onMount(() => {
-    // Fonts loaded
-    document.fonts.ready.then(function () {
-      console.log("All fonts in use by visible text have loaded.");
-    });
-
-    // Scroll detection
-    const callback = (entries, observer) => {
-      entries.forEach((entry) => {
-        setScrolled(!entry.isIntersecting);
-      });
-    };
-
-    const observer = new IntersectionObserver(callback, {
-      threshold: 0.95,
-    });
-
-    observer.observe(document.querySelector("#hero-title"));
-
-    // function step(timestamp) {
-    //   console.log("hello");
-    //   window.requestAnimationFrame(step);
-    // }
-
-    // window.requestAnimationFrame(step);
-  });
-</script>
-
 <div class="hero">
   <div class="background">
     <div class="animated-background">
@@ -49,7 +16,7 @@
       technical projects.
     </div>
     <div class="cta-block">
-      <button>Hire me</button>
+      <a href="/contact"><button>Hire me</button></a>
       <div class="video-resume">
         <div>or watch my video resume</div>
         <div class="youtube-icon">
@@ -148,7 +115,7 @@
     height: 7vh;
     font-size: 2.7vh;
     padding: 0 3.5vh;
-    background: linear-gradient(180deg, #0091ff 0%, #250c14 150%);
+    background: linear-gradient(rgb(0, 145, 255), rgb(0, 34, 77));
     box-shadow: inset 0px -15px 20px rgb(0 0 0 / 0%),
       7px 7px 30px rgba(0, 0, 0, 1);
     border-radius: 5px;
@@ -156,6 +123,7 @@
     color: white;
     cursor: pointer;
     transition: box-shadow 0.2s, transform 0.15s;
+    will-change: transform;
   }
 
   .cta-block button:hover {
@@ -248,7 +216,7 @@
   /* BACKGROUND */
 
   .background {
-    animation: animate-color 15s linear infinite;
+    animation: animate-color 15s linear infinite alternate-reverse;
     height: 100vh;
     position: absolute;
     top: 0;
@@ -306,34 +274,22 @@
 
   @keyframes animate-color {
     0% {
-      background-color: hsl(0 50% 30% / 1);
+      background-color: hsl(170 40% 25% / 1);
     }
     20% {
-      background-color: hsl(36 50% 30% / 1);
-    }
-    30% {
-      background-color: hsl(72 50% 30% / 1);
+      background-color: hsl(206 40% 25% / 1);
     }
     40% {
-      background-color: hsl(108 50% 30% / 1);
+      background-color: hsl(242 40% 25% / 1);
     }
-    50% {
-      background-color: hsl(144 50% 30% / 1);
-    }
-    60% {
-      background-color: hsl(170 50% 30% / 1);
-    }
-    70% {
-      background-color: hsl(206 50% 30% / 1);
+    65% {
+      background-color: hsl(278 40% 25% / 1);
     }
     80% {
-      background-color: hsl(242 50% 30% / 1);
-    }
-    90% {
-      background-color: hsl(278 50% 30% / 1);
+      background-color: hsl(0 40% 25% / 1);
     }
     100% {
-      background-color: hsl(360 50% 30% / 1);
+      background-color: hsl(36 40% 25% / 1);
     }
   }
 

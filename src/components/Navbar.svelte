@@ -2,32 +2,56 @@
   import { onMount } from "svelte";
   import { fade, fly } from "svelte/transition";
 
-  let active = "home";
-  let defaultActive = "home";
   let mounted = false;
   let barWidth = 0;
   let barLeft = 0;
   let showMobileMenu = false;
+  let indicator, navbar;
+  let hovered;
+
+  let tempScrolled = false;
+
+  $: {
+    hovered = active;
+  }
+
+  const routeMapping = {
+    "/": "home",
+    "/about": "about",
+    "/contact": "contact",
+  };
 
   onMount(() => {
+    const callback = (entries) => {
+      entries.forEach((entry) => {
+        tempScrolled = !entry.isIntersecting;
+      });
+    };
+    const observer = new IntersectionObserver(callback);
+    observer.observe(indicator);
+
+    if (!hovered) hovered = active;
     mounted = true;
   });
 
   $: {
     if (mounted) {
       barWidth = document
-        .querySelector(`#${active}-link`)
+        .querySelector(`#${routeMapping[hovered || active]}-link`)
         .getBoundingClientRect().width;
       barLeft = document
-        .querySelector(`#${active}-link`)
+        .querySelector(`#${routeMapping[hovered || active]}-link`)
         .getBoundingClientRect().x;
     }
   }
 
-  export let scrolled = false;
+  $: scrolled = active === "/" ? tempScrolled : true;
+
+  export let active = "/";
 </script>
 
-<div class="main {scrolled ? 'scrolled' : ''}">
+<div class="scroll-indicator" bind:this={indicator} />
+<div bind:this={navbar} class="main {scrolled ? 'scrolled' : ''}">
   <div class="container">
     <div class="logo">Hi, I'm Zak</div>
     <div
@@ -37,39 +61,36 @@
       }}>
       {#if !showMobileMenu}
         <img src="/images/menu.svg" alt="mobile menu" />
-      {:else}
-        <img in:fade src="/images/x.svg" alt="close mobile menu" />
-      {/if}
-
+      {:else}<img in:fade src="/images/x.svg" alt="close mobile menu" />{/if}
     </div>
     <div class="links">
-      <div
-        on:mouseover={() => (active = 'home')}
-        on:mouseleave={() => (active = defaultActive)}
+      <a
+        href="/"
+        on:mouseover={() => (hovered = '/')}
+        on:mouseleave={() => (hovered = active)}
         id="home-link"
-        class="link {active === 'home' && 'active'}">
+        class="link"
+        class:active={hovered === '/'}>
         Home
-      </div>
-      <div
-        on:mouseover={() => (active = 'about')}
-        on:mouseleave={() => (active = defaultActive)}
+      </a>
+      <a
+        href="/about"
+        on:mouseover={() => (hovered = '/about')}
+        on:mouseleave={() => (hovered = active)}
         id="about-link"
-        class="link {active === 'about' && 'active'}">
+        class="link"
+        class:active={hovered === '/about'}>
         About
-      </div>
-      <div
-        on:mouseover={() => (active = 'contact')}
-        on:mouseleave={() => (active = defaultActive)}
+      </a>
+      <a
+        href="/contact"
+        on:mouseover={() => (hovered = '/contact')}
+        on:mouseleave={() => (hovered = active)}
         id="contact-link"
-        class="link {active === 'contact' && 'active'}">
+        class="link"
+        class:active={hovered === '/contact'}>
         Contact me
-      </div>
-      <!-- <div class="link color-mode">
-        <div class="icon">
-          <img src="/images/day.svg" alt="day icon" />
-        </div>
-        <div>Day mode</div>
-      </div> -->
+      </a>
     </div>
   </div>
   <div
@@ -78,22 +99,35 @@
   {#if showMobileMenu}
     <div transition:fade class="mobile-menu">
       <div class="mobile-links">
-        <div in:fly={{ x: -50, delay: 0, duration: 750 }} class="mobile-link">
-          Home
-        </div>
-        <div in:fly={{ x: 50, delay: 100, duration: 750 }} class="mobile-link">
-          About
-        </div>
-        <div in:fly={{ x: -50, delay: 200, duration: 750 }} class="mobile-link">
-          Contact
-        </div>
-
+        <a href="/" on:click={() => (showMobileMenu = false)}><div
+            in:fly={{ x: -50, delay: 0, duration: 750 }}
+            class="mobile-link">
+            Home
+          </div></a>
+        <a href="/about" on:click={() => (showMobileMenu = false)}><div
+            in:fly={{ x: 50, delay: 100, duration: 750 }}
+            class="mobile-link">
+            About
+          </div></a>
+        <a href="/contact" on:click={() => (showMobileMenu = false)}><div
+            in:fly={{ x: -50, delay: 200, duration: 750 }}
+            class="mobile-link">
+            Contact me
+          </div></a>
       </div>
     </div>
   {/if}
 </div>
 
 <style>
+  .scroll-indicator {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: white;
+    top: 15%;
+    opacity: 0;
+  }
   .main {
     top: 0;
     left: 0;
