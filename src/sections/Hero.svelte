@@ -7,7 +7,7 @@
   </div>
 
   <div class="content">
-    <img class="picture" src="/images/person.png" alt="Zakaria Najem" />
+    <!-- <img class="picture" src="/images/person.png" alt="Zakaria Najem" /> -->
     <div class="title" id="hero-title">
       The Swiss Army
       <br />
