@@ -2,12 +2,13 @@
   import { onMount } from "svelte";
   import { fade, fly } from "svelte/transition";
 
-  let mounted = false;
   let barWidth = 0;
   let barLeft = 0;
   let showMobileMenu = false;
   let indicator, navbar;
   let hovered;
+
+  let mounted = false;
 
   let tempScrolled = false;
 
@@ -36,12 +37,14 @@
 
   $: {
     if (mounted) {
-      barWidth = document
-        .querySelector(`#${routeMapping[hovered || active]}-link`)
-        .getBoundingClientRect().width;
-      barLeft = document
-        .querySelector(`#${routeMapping[hovered || active]}-link`)
-        .getBoundingClientRect().x;
+      let activeRef = document.querySelector(
+        `#${routeMapping[hovered || active]}-link`
+      );
+
+      if (activeRef) {
+        barWidth = activeRef.getBoundingClientRect().width;
+        barLeft = activeRef.getBoundingClientRect().x;
+      }
     }
   }
 
