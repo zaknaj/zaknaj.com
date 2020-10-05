@@ -6,12 +6,19 @@
   let name = "";
   let email = "";
   let message = "";
-
   let textAreaRef = null;
   let textAreaHeight = 2;
   let cloneRef = null;
 
+  let sent = false;
+  let loading = false;
+
   onMount(() => {});
+
+  const isValid = (email) => {
+    const re = /\S+@\S+\.\S+/;
+    return re.test(email);
+  };
 
   const handleNameBlur = (e) => {
     if (e.target.value.length > 0) {
@@ -60,6 +67,8 @@
       message: newMessage,
     };
 
+    loading = true;
+
     fetch("https://hook.integromat.com/s0slt684acfqt45qp1fqepy9jb94qahk", {
       method: "POST",
       headers: {
@@ -67,6 +76,9 @@
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
+    }).then(() => {
+      loading = false;
+      sent = true;
     });
   };
 </script>
@@ -124,9 +136,20 @@
           </div>
         </div>
         <div class="form-footer">
-          <div class="error-msg">Please enter a valid email address.</div>
+          <div class="error-msg">
+            {#if !isValid(email)}Please enter a valid email address.{/if}
+          </div>
           <div>
-            <button on:click={onSubmit}>Send <span>{'-->'}</span></button>
+            <button
+              disabled={!isValid(email) || loading || sent}
+              on:click={onSubmit}>
+              {#if sent}
+                <span class="email-sent">Sent!</span>
+              {:else if !loading}
+                Send
+                <span>{'-->'}</span>
+              {:else}Loading ...{/if}
+            </button>
           </div>
         </div>
       </div>
@@ -278,6 +301,11 @@
     padding: 0px;
   }
 
+  .form-footer button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
   .form-footer button span {
     display: inline-block;
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -347,6 +375,10 @@
   .name-input-container input::placeholder,
   .email-input-container input::placeholder {
     font-style: italic;
+  }
+
+  .email-sent {
+    color: #00ff00;
   }
 
   @media screen and (max-width: 600px) {
