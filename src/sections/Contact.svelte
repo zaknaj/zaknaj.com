@@ -48,12 +48,26 @@
   };
 
   const onSubmit = () => {
+    const newMessage = message
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/(?:\r\n|\r|\n)/g, "<br>");
     const data = {
       name,
       email,
-      message,
+      message: newMessage,
     };
-    console.log(data);
+
+    fetch("https://hook.integromat.com/s0slt684acfqt45qp1fqepy9jb94qahk", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
   };
 </script>
 

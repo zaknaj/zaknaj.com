@@ -231,6 +231,7 @@
     top: -800px;
     transform-origin: 60% 40%;
     animation: rotate-bg 15s linear infinite;
+    will-change: transform;
   }
 
   .animated-background {

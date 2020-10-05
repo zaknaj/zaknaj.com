@@ -182,6 +182,22 @@
     margin-bottom: 20px;
   }
 
+  .box:nth-child(1) .title {
+    color: #ffdc61;
+  }
+
+  .box:nth-child(2) .title {
+    color: #5ccf3f;
+  }
+
+  .box:nth-child(3) .title {
+    color: #00c2ff;
+  }
+
+  .box:nth-child(4) .title {
+    color: #ff9be9;
+  }
+
   @media screen and (max-width: 600px) {
     .container {
       padding: 0 32px;
@@ -208,22 +224,6 @@
     .cta > div:first-child {
       margin-bottom: 25px;
       margin-top: 50px;
-    }
-
-    .box:nth-child(1) .title {
-      color: #ffdc61;
-    }
-
-    .box:nth-child(2) .title {
-      color: #5ccf3f;
-    }
-
-    .box:nth-child(3) .title {
-      color: #00c2ff;
-    }
-
-    .box:nth-child(4) .title {
-      color: #ff9be9;
     }
   }
 </style>
