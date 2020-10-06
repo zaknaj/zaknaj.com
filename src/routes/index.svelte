@@ -26,6 +26,10 @@
         duration: 2000,
         rotate: "5deg",
         easing: "easeInOutQuart",
+        begin: () => {
+          document.body.style.position = "fixed";
+          document.body.style.overflowY = "scroll";
+        },
       })
         .add({
           targets: loaderRef,
