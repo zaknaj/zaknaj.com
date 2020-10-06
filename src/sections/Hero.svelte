@@ -1,12 +1,12 @@
 <div class="hero">
   <div class="background">
     <div class="animated-background">
-      <img src="/images/animbg.svg" alt="background" />
-      <div class="background-overlay" />
+      <img src="/images/animbg.svg" alt="background" id="animbg" />
+      <div class="background-overlay" id="background-overlay" />
     </div>
   </div>
 
-  <div class="content">
+  <div class="content" id="hero-content">
     <!-- <img class="picture" src="/images/person.png" alt="Zakaria Najem" /> -->
     <div class="title" id="hero-title">
       The Swiss Army
@@ -88,8 +88,7 @@
     padding: 0 100px;
   }
 
-  .picture {
-    /* TEMPORARY - WAITING FOR PICTURE */
+  /* .picture {
     display: none;
 
     position: absolute;
@@ -97,7 +96,7 @@
     top: 10%;
     height: 90%;
     z-index: 3;
-  }
+  } */
 
   .title {
     color: white;
@@ -230,7 +229,7 @@
     left: -1400px;
     top: -800px;
     transform-origin: 60% 40%;
-    animation: rotate-bg 15s linear infinite;
+    /* animation: rotate-bg 15s linear infinite; */
     will-change: transform;
   }
 
@@ -254,15 +253,6 @@
   }
 
   /* ANIMATIONS */
-
-  @keyframes rotate-bg {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
 
   @keyframes moving-dots {
     from {
@@ -301,7 +291,7 @@
       left: -530px;
       top: -250px;
       height: 1000px;
-      animation: rotate-bg 10s linear infinite;
+      /* animation: rotate-bg 10s linear infinite; */
       will-change: transform;
       transform-origin: 55% 44%;
     }
@@ -315,7 +305,6 @@
     .hero {
       height: unset;
       min-height: 100vh;
-
       background-color: #000;
     }
     .content {
@@ -374,7 +363,7 @@
       transform-origin: 0px 0px;
       left: 63px;
     }
-
+    /* 
     .picture {
       left: unset;
       height: 110vw;
@@ -382,6 +371,6 @@
       bottom: 0;
       position: fixed;
       right: -70px;
-    }
+    } */
   }
 </style>

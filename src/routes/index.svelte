@@ -5,6 +5,54 @@
   import Whatyouget from "../sections/WhatYouGet.svelte";
   import TechStack from "../sections/TechStack.svelte";
   import WhatIDo from "../sections/WhatIDo.svelte";
+  import { onMount } from "svelte";
+  import anime from "animejs/lib/anime.es";
+
+  let fontsLoaded = false;
+  let loaderRef;
+
+  onMount(() => {
+    document.fonts.ready.then(function () {
+      fontsLoaded = true;
+    });
+  });
+
+  $: {
+    if (fontsLoaded) {
+      const tl = anime.timeline({});
+      tl.add({
+        targets: loaderRef,
+        translateY: "35%",
+        duration: 2000,
+        rotate: "5deg",
+        easing: "easeInOutQuart",
+      })
+        .add({
+          targets: loaderRef,
+          opacity: [1, 0],
+          duration: 50,
+          complete: () => {
+            document.body.style.position = "static";
+            document.body.style.overflowY = "auto";
+          },
+        })
+        .add({
+          targets: "#hero-content",
+          opacity: [0, 1],
+          duration: 500,
+          easing: "linear",
+          complete: () => {
+            anime({
+              targets: "#animbg",
+              rotate: [0, "360deg"],
+              duration: 10000,
+              easing: "linear",
+              loop: true,
+            });
+          },
+        });
+    }
+  }
 </script>
 
 <svelte:head>
@@ -12,6 +60,7 @@
 </svelte:head>
 
 <div class="base">
+  <div bind:this={loaderRef} class="loading-screen">hello</div>
   <Hero />
   <Testimonial />
   <Projects />
@@ -19,3 +68,24 @@
   <TechStack />
   <WhatIDo />
 </div>
+
+<style>
+  .loading-screen {
+    z-index: 9;
+    position: fixed;
+    height: 100vh;
+    background: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transform-origin: 0px 0px;
+    will-change: transform, opacity;
+  }
+
+  :global(body) {
+    position: fixed;
+    overflow-y: scroll;
+    width: 100%;
+  }
+</style>

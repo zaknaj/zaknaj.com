@@ -136,7 +136,7 @@
     left: 0;
     position: fixed;
     width: 100%;
-    z-index: 5;
+    z-index: 10;
     border-bottom: 1px solid transparent;
     transition: all 0.3s;
   }
