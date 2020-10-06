@@ -42,21 +42,16 @@
             document.body.style.overflowY = "auto";
           },
         })
-        .add({
-          targets: "#hero-content",
-          opacity: [0, 1],
-          duration: 1000,
-          easing: "linear",
-          begin: () => {
-            anime({
-              targets: "#animbg",
-              rotate: [0, "360deg"],
-              duration: 10000,
-              easing: "linear",
-              loop: true,
-            });
+        .add(
+          {
+            targets: "#hero-content",
+            opacity: [0, 1],
+            translateY: [-30, 0],
+            duration: 700,
+            easing: "easeInOutSine",
           },
-        })
+          "-=700"
+        )
         .add(
           {
             targets: "#hero-content .icon-block",
@@ -66,7 +61,7 @@
             easing: "easeInOutQuart",
             delay: anime.stagger(200),
           },
-          "-=500"
+          "-=1000"
         )
         .add(
           {
@@ -74,6 +69,15 @@
             opacity: 1,
             easing: "linear",
             duration: 500,
+            complete: () => {
+              anime({
+                targets: "#animbg",
+                rotate: [0, "360deg"],
+                duration: 10000,
+                easing: "linear",
+                loop: true,
+              });
+            },
           },
           "-=700"
         );
@@ -97,7 +101,7 @@
 
 <style>
   .loading-screen {
-    z-index: 9;
+    z-index: 8;
     position: fixed;
     height: 100vh;
     background: black;

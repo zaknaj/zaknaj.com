@@ -86,6 +86,9 @@
     max-width: 1300px;
     margin: 23vh auto 0;
     padding: 0 100px;
+    z-index: 9;
+    position: relative;
+    opacity: 0;
   }
 
   /* .picture {
@@ -314,7 +317,8 @@
       padding: 0px 32px;
       margin-top: 110px;
       position: relative;
-      z-index: 2;
+      z-index: 9;
+      opacity: 0;
     }
 
     .title {
