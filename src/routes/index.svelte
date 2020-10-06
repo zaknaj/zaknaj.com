@@ -31,7 +31,9 @@
           targets: loaderRef,
           opacity: [1, 0],
           duration: 50,
-          complete: () => {
+          begin: (anim) => {
+            const ref = anim.animatables[0].target;
+            ref.style.display = "none";
             document.body.style.position = "static";
             document.body.style.overflowY = "auto";
           },
@@ -41,16 +43,35 @@
           opacity: [0, 1],
           duration: 500,
           easing: "linear",
-          complete: () => {
-            anime({
-              targets: "#animbg",
-              rotate: [0, "360deg"],
-              duration: 10000,
-              easing: "linear",
-              loop: true,
-            });
+        })
+        .add(
+          {
+            targets: "#hero-content .icon-block",
+            translateX: [-40, 0],
+            opacity: 1,
+            easing: "easeInOutQuart",
+            delay: anime.stagger(200),
           },
-        });
+          "-=500"
+        )
+        .add(
+          {
+            targets: "#hero-content .moving-dots",
+            opacity: 1,
+            easing: "linear",
+            duration: 500,
+            complete: () => {
+              anime({
+                targets: "#animbg",
+                rotate: [0, "360deg"],
+                duration: 10000,
+                easing: "linear",
+                loop: true,
+              });
+            },
+          },
+          "-=700"
+        );
     }
   }
 </script>

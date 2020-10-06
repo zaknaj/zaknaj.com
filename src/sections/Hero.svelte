@@ -171,7 +171,8 @@
   .moving-dots {
     display: block;
     animation: moving-dots 0.5s linear infinite;
-    will-change: transform;
+    opacity: 0;
+    will-change: opacity, transform;
     width: 800px;
   }
 
@@ -183,6 +184,8 @@
 
   .icon-block {
     color: white;
+    opacity: 0;
+    will-change: opacity, transform;
   }
 
   .icon-block:last-child {
