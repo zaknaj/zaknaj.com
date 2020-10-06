@@ -22,7 +22,7 @@
       const tl = anime.timeline({});
       tl.add({
         targets: loaderRef,
-        translateY: "35%",
+        translateY: window.innerWidth > 600 ? "35%" : "155px",
         duration: 2000,
         rotate: "5deg",
         easing: "easeInOutQuart",
@@ -45,13 +45,23 @@
         .add({
           targets: "#hero-content",
           opacity: [0, 1],
-          duration: 500,
+          duration: 1000,
           easing: "linear",
+          begin: () => {
+            anime({
+              targets: "#animbg",
+              rotate: [0, "360deg"],
+              duration: 10000,
+              easing: "linear",
+              loop: true,
+            });
+          },
         })
         .add(
           {
             targets: "#hero-content .icon-block",
-            translateX: [-40, 0],
+            translateX: window.innerWidth > 600 ? [-40, 0] : [0, 0],
+            translateY: window.innerWidth <= 600 ? [-40, 0] : [0, 0],
             opacity: 1,
             easing: "easeInOutQuart",
             delay: anime.stagger(200),
@@ -64,15 +74,6 @@
             opacity: 1,
             easing: "linear",
             duration: 500,
-            complete: () => {
-              anime({
-                targets: "#animbg",
-                rotate: [0, "360deg"],
-                duration: 10000,
-                easing: "linear",
-                loop: true,
-              });
-            },
           },
           "-=700"
         );
