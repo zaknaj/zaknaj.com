@@ -61,7 +61,7 @@
             easing: "easeInOutQuart",
             delay: anime.stagger(200),
           },
-          "-=1000"
+          "-=500"
         )
         .add(
           {
