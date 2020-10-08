@@ -1,11 +1,5 @@
 <script>
   import Contact from "../sections/Contact.svelte";
-
-  import { onMount } from "svelte";
-
-  onMount(() => {
-    window.scrollTo(0, 0);
-  });
 </script>
 
 <svelte:head>

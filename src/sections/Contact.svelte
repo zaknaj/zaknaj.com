@@ -1,4 +1,6 @@
 <script>
+  import anime from "animejs/lib/anime.es";
+
   import { onMount } from "svelte";
 
   let showNameInput = true;
@@ -13,7 +15,15 @@
   let sent = false;
   let loading = false;
 
-  onMount(() => {});
+  onMount(() => {
+    anime({
+      targets: "#contact-content",
+      translateY: [-20, 0],
+      opacity: [0, 1],
+      easing: "easeInOutQuad",
+      duration: 700,
+    });
+  });
 
   const isValid = (email) => {
     const re = /\S+@\S+\.\S+/;
@@ -84,7 +94,7 @@
 </script>
 
 <div class="main">
-  <div class="container">
+  <div class="container" id="contact-content">
     <div class="content">
       <div class="title">
         <div>Contact me</div>
@@ -181,6 +191,7 @@
     padding: 0 100px;
     margin: auto;
     padding-bottom: 200px;
+    will-change: transform, opacity;
   }
 
   .title {
@@ -197,7 +208,7 @@
   }
 
   .online-form .form-box {
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.25);
     border-radius: 2px;
     padding: 25px;
     min-height: 250px;
