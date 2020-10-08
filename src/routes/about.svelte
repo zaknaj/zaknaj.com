@@ -83,6 +83,7 @@
     padding: 0 50px;
     margin: auto;
     padding-bottom: 200px;
+    will-change: transform, opacity;
   }
 
   .content {
@@ -102,5 +103,29 @@
     font-weight: bold;
     font-size: 14px;
     font-style: italic;
+  }
+
+  @media screen and (max-width: 600px) {
+    .bg {
+      display: none;
+    }
+    .main {
+      padding-top: 110px;
+    }
+    .container {
+      padding: 0 32px;
+    }
+
+    .title {
+      font-size: 40px;
+    }
+
+    .content {
+      font-size: 14px;
+    }
+
+    .open-for-hire {
+      font-size: 12px;
+    }
   }
 </style>
