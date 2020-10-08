@@ -74,7 +74,7 @@
     object-fit: cover;
     height: 115%;
     filter: blur(60px);
-    opacity: 0.8;
+    opacity: 0.6;
     z-index: -1;
   }
 
@@ -114,6 +114,7 @@
     }
     .container {
       padding: 0 32px;
+      padding-bottom: 70px;
     }
 
     .title {
